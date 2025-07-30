@@ -1,29 +1,28 @@
 <!-- Navigation of Months -->
-<div class="calendar-nav">
-  <button (click)="navigateMonth(-1)">‹ Prev</button>
-  <span>{{ activeMonth | date: 'MMMM yyyy' }}</span>
-  <button (click)="navigateMonth(1)">Next ›</button>
-</div>
-
-<div *ngFor="let offset of [0, 1]" class="month">
-  <!-- Month-Year Header -->
-  <div class="month-header">
-    {{ addMonths(activeMonth, offset) | date: 'MMMM yyyy' }}
+<div class="main-container">
+  <div class="calendar-nav">
+    <button (click)="navigateMonth(-1)">‹ Prev</button>
+    <button (click)="navigateMonth(1)">Next ›</button>
   </div>
 
-  <!-- Calendar View -->
-  <mwl-calendar-month-view
-    [viewDate]="addMonths(activeMonth, offset)"
-    [events]="[]"
-    [activeDayIsOpen]="false"
-    (dayClicked)="onDayClick($event.day.date)"
-    [cellTemplate]="customCell"
-  >
-  </mwl-calendar-month-view>
+  <div class="calendar-months-container" [ngClass]="scale">
+    <div *ngFor="let month of renderedMonths; let i = index" class="month">
+      <div class="month-header">{{ month | date: 'MMMM yyyy' }}</div>
+
+      <mwl-calendar-month-view
+        [viewDate]="month"
+        [events]="[]"
+        [activeDayIsOpen]="false"
+        (dayClicked)="onDayClick($event.day.date)"
+        [cellTemplate]="customCell"
+      >
+      </mwl-calendar-month-view>
+    </div>
+  </div>
 </div>
 
 <!-- Cell template -->
-<ng-template #customCell let-day="day">
+<ng-template #customCell let-day="day" let-viewDate="viewDate">
   <div
     class="custom-day"
     [ngClass]="{

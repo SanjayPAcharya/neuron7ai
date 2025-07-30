@@ -1,3 +1,14 @@
+.calendar-months-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.month {
+  width: 400px;
+}
+
+
 ::ng-deep mwl-calendar-month-view {
   display: block;
   max-width: 800px;
@@ -11,6 +22,7 @@
   margin-bottom: 1rem;
   font-weight: 600;
 }
+
 .calendar-nav button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -35,7 +47,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  min-height: 60px !important;
   padding: 8px;
   border-radius: 6px;
   transition: background 0.2s ease;
@@ -52,6 +64,10 @@
   background-color: #e0f0ff;
 }
 
+::ng-deep .cal-month-view .cal-day-cell {
+  min-height: auto;
+}
+
 ::ng-deep .day-number {
   font-weight: bold;
   font-size: 16px;
@@ -60,4 +76,24 @@
 ::ng-deep .day-price {
   font-size: 13px;
   color: #777;
+}
+
+.calendar-months-container.small .month {
+  transform: scale(0.8);
+  transform-origin: top center;
+}
+
+.calendar-months-container.medium .month {
+  transform: scale(1);
+  transform-origin: top center;
+}
+
+.calendar-months-container.large .month {
+  transform: scale(1.2);
+  transform-origin: top center;
+}
+
+.custom-day.outside-month {
+  opacity: 0.4;
+  pointer-events: none;
 }

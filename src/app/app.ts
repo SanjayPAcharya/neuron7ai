@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgClass, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   addMonths,
   isSameDay,
@@ -13,7 +13,7 @@ import { CalenderRangePicker } from './components/calender-range-picker/calender
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   standalone: true,
-  imports: [NgClass, CommonModule, CalendarMonthModule, CalenderRangePicker]
+  imports: [CommonModule, CalendarMonthModule, CalenderRangePicker]
 })
 export class AppComponent {
   activeMonth: Date = new Date();

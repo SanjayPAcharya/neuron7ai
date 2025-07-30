@@ -1,15 +1,20 @@
-import { DatePipe, NgClass, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { CalendarMonthModule } from 'angular-calendar';
-import { addMonths, isSameDay, isWithinInterval } from 'date-fns';
+import {
+  isSameDay,
+  isWithinInterval,
+} from 'date-fns';
 
 @Component({
   selector: 'app-calender-range-picker',
-  imports: [CalendarMonthModule, NgFor, NgClass, DatePipe],
+  imports: [CalendarMonthModule, CommonModule, DatePipe],
   templateUrl: './calender-range-picker.html',
   styleUrl: './calender-range-picker.scss',
 })
 export class CalenderRangePicker {
+  @Input('scale') scale: 'small' | 'medium' | 'large' = 'medium';
+
   activeMonth: Date = new Date();
   startDate: Date | null = null;
   endDate: Date | null = null;
@@ -68,5 +73,9 @@ export class CalenderRangePicker {
         this.endDate = date;
       }
     }
+  }
+
+  get renderedMonths(): Date[] {
+    return [0, 1].map((offset) => this.addMonths(this.activeMonth, offset));
   }
 }
