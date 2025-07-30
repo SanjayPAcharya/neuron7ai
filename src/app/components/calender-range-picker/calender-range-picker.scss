@@ -26,12 +26,12 @@
 }
 
 .calendar-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    width: 100%;
-    font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-weight: 600;
 }
 
 .calendar-nav button {
@@ -75,7 +75,7 @@
   align-items: center;
   justify-content: center;
   min-height: 60px !important;
-  padding:8px;
+  padding: 8px;
   border-radius: 6px;
   transition: background 0.2s ease;
   cursor: pointer;
@@ -104,11 +104,13 @@
 
 ::ng-deep .day-price {
   font-size: 13px;
-  color: #777;
-  display: inline-flex;
+  color: #5f5d5d;
+  display: flex;
   width: 100%;
   margin-top: 10px;
   font-weight: 100;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-day.outside-month {
@@ -126,7 +128,7 @@
 }
 
 ::ng-deep .cal-month-view .cal-day-cell.cal-today {
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
   .custom-day {
     background-color: #abffab;
   }
@@ -142,8 +144,8 @@
   justify-content: space-between;
   padding: 0.5rem 0;
   font-weight: bold;
-      font-size: 16px;
-    color: gray;
+  font-size: 16px;
+  color: gray;
 }
 
 .weekday {
@@ -157,6 +159,6 @@
 
 ::ng-deep .cal-month-view .cal-days .cal-cell-row,
 ::ng-deep .cal-month-view .cal-day-cell:not(:last-child),
-::ng-deep .cal-month-view .cal-days  {
+::ng-deep .cal-month-view .cal-days {
   border: none;
 }

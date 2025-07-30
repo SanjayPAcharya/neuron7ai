@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   showSelectedRange(data: any) {
-    console.log(data);
+    this.isRangePickerOpen = false;
     this.selectedRange = data;
   }
 }

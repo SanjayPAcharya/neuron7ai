@@ -1,7 +1,7 @@
 <!-- Navigation of Months -->
 <div class="main-container" [ngClass]="scale">
   <div class="calendar-nav">
-    <button class="common-button" (click)="navigateMonth(-1)">‹ Prev</button>
+    <button class="common-button" (click)="navigateMonth(-1)">‹</button>
     <button
       (click)="emitFootfallList()"
       class="common-button"
@@ -9,7 +9,7 @@
     >
       Confirm Date Range
     </button>
-    <button class="common-button" (click)="navigateMonth(1)">Next ›</button>
+    <button class="common-button" (click)="navigateMonth(1)">›</button>
   </div>
 
   <div class="calendar-months-container">
