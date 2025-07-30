@@ -1,11 +1,17 @@
 <div class="calendar-container">
   <div class="header">
-    <strong>Range Selector Calender</strong>
-  </div>
-  <div class="dateContainer">
-    <app-calender-range-picker
-      [scale]="'medium'"
-      (rangeSelected)="showSelectedRange($event)"
-    ></app-calender-range-picker>
+    <div class="button-wrapper">
+      <button class="common-button" (click)="toggleRangePicker()">
+        Open Date Range Selector
+      </button>
+
+      <!-- Dropdown-style calendar -->
+      <div class="dropdown" *ngIf="isRangePickerOpen">
+        <app-calender-range-picker
+          [scale]="'medium'"
+          (footfallEmitted)="showSelectedRange($event)"
+        ></app-calender-range-picker>
+      </div>
+    </div>
   </div>
 </div>

@@ -3,6 +3,11 @@
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
+  padding: 40px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  margin-top: 8px;
 }
 
 .main-container.small {
@@ -70,7 +75,7 @@
   align-items: center;
   justify-content: center;
   min-height: 60px !important;
-  padding: 8px;
+  padding:8px;
   border-radius: 6px;
   transition: background 0.2s ease;
   cursor: pointer;
@@ -85,6 +90,7 @@
 ::ng-deep .custom-day.in-range {
   background-color: #e0f0ff;
   color: #525252;
+  border-radius: 0px;
 }
 
 ::ng-deep .cal-month-view .cal-day-cell {
@@ -101,8 +107,8 @@
   color: #777;
   display: inline-flex;
   width: 100%;
-  justify-content: space-between;
   margin-top: 10px;
+  font-weight: 100;
 }
 
 .custom-day.outside-month {
@@ -111,6 +117,46 @@
 }
 
 .footfallicon {
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
+}
+
+.noShow {
+  display: none;
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-today {
+  background-color: #FFFFFF !important;
+  .custom-day {
+    background-color: #abffab;
+  }
+}
+
+.blankDiv {
+  height: 100%;
+  width: 100%;
+}
+
+.weekday-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-weight: bold;
+      font-size: 16px;
+    color: gray;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+}
+
+::ng-deep .cal-cell-row.cal-header {
+  display: none;
+}
+
+::ng-deep .cal-month-view .cal-days .cal-cell-row,
+::ng-deep .cal-month-view .cal-day-cell:not(:last-child),
+::ng-deep .cal-month-view .cal-days  {
+  border: none;
 }

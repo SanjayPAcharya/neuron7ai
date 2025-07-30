@@ -13,35 +13,55 @@
   </div>
 
   <div class="calendar-months-container">
-    <div *ngFor="let month of renderedMonths; let i = index" class="month">
+    <div *ngFor="let month of renderedMonths" class="month">
       <div class="month-header">{{ month | date: 'MMMM yyyy' }}</div>
+      <!-- Custom weekday header -->
+      <div class="weekday-header">
+        <div class="weekday" *ngFor="let day of shortWeekdays">{{ day }}</div>
+      </div>
 
       <mwl-calendar-month-view
         [viewDate]="month"
         [events]="[]"
         [activeDayIsOpen]="false"
         (dayClicked)="onDayClick($event.day.date)"
-        [cellTemplate]="customCell"
+        [cellTemplate]="customCellWrapper"
       >
       </mwl-calendar-month-view>
+
+      <!-- Wrapper template that injects viewDate -->
+      <ng-template #customCellWrapper let-day="day">
+        <ng-template
+          [calendarCellContext]="{ day: day, viewDate: month }"
+          [ngTemplateOutlet]="customCell"
+          [ngTemplateOutletContext]="{ day: day, viewDate: month }"
+        ></ng-template>
+      </ng-template>
     </div>
   </div>
 </div>
 
 <!-- Cell template -->
 <ng-template #customCell let-day="day" let-viewDate="viewDate">
-  <div
-    class="custom-day"
-    [ngClass]="{
+  <ng-container *ngIf="!noShow(day.date, viewDate)">
+    <div
+      class="custom-day"
+      [ngClass]="{
       'in-range': isInRange(day.date),
       'start-date': isStart(day.date),
-      'end-date': isEnd(day.date)
+      'end-date': isEnd(day.date),
     }"
-  >
-    <div class="day-number">{{ day.date.getDate() }}</div>
-    <div class="day-price">
-      <img class="footfallicon" src="assets/images/person.svg" />
-      {{ getDayFootfall(day.date) }}
+    >
+      <div class="day-number">{{ day.date.getDate() }}</div>
+      <div class="day-price">
+        <img class="footfallicon" src="assets/images/person.svg" />
+        {{ getDayFootfall(day.date) }}
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <div
+    class="blankDiv"
+    *ngIf="noShow(day.date, viewDate)"
+    (click)="stopClick($event)"
+  ></div>
 </ng-template>
