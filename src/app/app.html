@@ -3,6 +3,9 @@
     <strong>Range Selector Calender</strong>
   </div>
   <div class="dateContainer">
-    <app-calender-range-picker [scale]="'small'"></app-calender-range-picker>
+    <app-calender-range-picker
+      [scale]="'medium'"
+      (rangeSelected)="showSelectedRange($event)"
+    ></app-calender-range-picker>
   </div>
 </div>

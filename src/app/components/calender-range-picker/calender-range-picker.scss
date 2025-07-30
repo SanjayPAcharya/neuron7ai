@@ -1,3 +1,39 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.main-container.small {
+  transform: scale(0.6);
+  transform-origin: top center;
+}
+
+.main-container.medium {
+  transform: scale(0.8);
+  transform-origin: top center;
+}
+
+.main-container.large {
+  transform: scale(1);
+  transform-origin: top center;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-weight: 600;
+}
+
+.calendar-nav button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
 .calendar-months-container {
   display: flex;
   gap: 2rem;
@@ -8,31 +44,17 @@
   width: 400px;
 }
 
-
-::ng-deep mwl-calendar-month-view {
-  display: block;
-  max-width: 800px;
-  margin: auto;
-}
-
-.calendar-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.calendar-nav button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-
 .month-header {
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   text-align: center;
+}
+
+::ng-deep mwl-calendar-month-view {
+  display: block;
+  max-width: 800px;
+  margin: auto;
 }
 
 ::ng-deep .cal-header {
@@ -56,12 +78,13 @@
 
 ::ng-deep .custom-day.start-date,
 ::ng-deep .custom-day.end-date {
-  background-color: #007bff;
-  color: white;
+  background-color: #e0f0ff;
+  color: #525252 !important;
 }
 
 ::ng-deep .custom-day.in-range {
   background-color: #e0f0ff;
+  color: #525252;
 }
 
 ::ng-deep .cal-month-view .cal-day-cell {
@@ -76,24 +99,18 @@
 ::ng-deep .day-price {
   font-size: 13px;
   color: #777;
-}
-
-.calendar-months-container.small .month {
-  transform: scale(0.8);
-  transform-origin: top center;
-}
-
-.calendar-months-container.medium .month {
-  transform: scale(1);
-  transform-origin: top center;
-}
-
-.calendar-months-container.large .month {
-  transform: scale(1.2);
-  transform-origin: top center;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .custom-day.outside-month {
   opacity: 0.4;
   pointer-events: none;
+}
+
+.footfallicon {
+  height: 16px;
+  width: 16px;
 }

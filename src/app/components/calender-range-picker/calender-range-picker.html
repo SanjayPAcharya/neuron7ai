@@ -1,11 +1,18 @@
 <!-- Navigation of Months -->
-<div class="main-container">
+<div class="main-container" [ngClass]="scale">
   <div class="calendar-nav">
-    <button (click)="navigateMonth(-1)">‹ Prev</button>
-    <button (click)="navigateMonth(1)">Next ›</button>
+    <button class="common-button" (click)="navigateMonth(-1)">‹ Prev</button>
+    <button
+      (click)="emitFootfallList()"
+      class="common-button"
+      [disabled]="!startDate || !endDate"
+    >
+      Confirm Date Range
+    </button>
+    <button class="common-button" (click)="navigateMonth(1)">Next ›</button>
   </div>
 
-  <div class="calendar-months-container" [ngClass]="scale">
+  <div class="calendar-months-container">
     <div *ngFor="let month of renderedMonths; let i = index" class="month">
       <div class="month-header">{{ month | date: 'MMMM yyyy' }}</div>
 
@@ -32,6 +39,9 @@
     }"
   >
     <div class="day-number">{{ day.date.getDate() }}</div>
-    <div class="day-price">₹{{ getDayPrice(day.date) }}</div>
+    <div class="day-price">
+      <img class="footfallicon" src="assets/images/person.svg" />
+      {{ getDayFootfall(day.date) }}
+    </div>
   </div>
 </ng-template>
