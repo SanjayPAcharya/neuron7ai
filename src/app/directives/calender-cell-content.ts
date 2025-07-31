@@ -1,3 +1,5 @@
+// this is to send data from months render to the date cell template
+// because angular-calender does not send data implicitly
 import {
   Directive,
   Input,

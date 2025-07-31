@@ -2,3 +2,34 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+.common-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &.success {
+    background-color: rgb(0 137 0);
+  }
+  &.warning {
+    background-color: rgb(201 93 0);
+  }
+  &:disabled {
+    background-color: rgb(165, 164, 164);
+    cursor: not-allowed;
+  }
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+  }
+}

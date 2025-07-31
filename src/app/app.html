@@ -1,37 +1,33 @@
 <div class="calendar-container">
   <div class="header">
     <div class="button-wrapper">
-      <button class="common-button" (click)="toggleRangePicker()">
+      <button class="common-button warning" (click)="toggleRangePicker()">
         Open Date Range Selector
       </button>
 
-      <!-- Dropdown-style calendar -->
-      <div class="dropdown" *ngIf="isRangePickerOpen">
+      <div class="dropdown" *ngIf="isRangePickerOpen" @dropdownAnimation>
         <app-calender-range-picker
           [scale]="'medium'"
           (footfallEmitted)="showSelectedRange($event)"
         ></app-calender-range-picker>
       </div>
+    </div>
 
-      <div
-        class="datesSelected"
-        *ngIf="!isRangePickerOpen && selectedRange?.length"
-      >
-        <table class="footfall-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Footfall</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of selectedRange">
-              <td>{{ item.date }}</td>
-              <td>{{ item.footfall }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="datesSelected" *ngIf="selectedRange?.length">
+      <table class="footfall-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Footfall</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of selectedRange">
+            <td>{{ item.date }}</td>
+            <td>{{ item.footfall }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

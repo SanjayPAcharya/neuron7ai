@@ -1,10 +1,9 @@
-<!-- Navigation of Months -->
 <div class="main-container" [ngClass]="scale">
   <div class="calendar-nav">
     <button class="common-button" (click)="navigateMonth(-1)">‹</button>
     <button
       (click)="emitFootfallList()"
-      class="common-button"
+      class="common-button success"
       [disabled]="!startDate || !endDate"
     >
       Confirm Date Range
@@ -53,7 +52,7 @@
     }"
     >
       <div class="day-number">{{ day.date.getDate() }}</div>
-      <div class="day-price">
+      <div class="day-count">
         <img class="footfallicon" src="assets/images/person.svg" />
         {{ getDayFootfall(day.date) }}
       </div>

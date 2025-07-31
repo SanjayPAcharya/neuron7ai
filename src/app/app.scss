@@ -1,98 +1,70 @@
-
 .calendar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 1000px;
-    margin: auto;
-    background: #FFFFFF;
-    border-radius: 12px;
-}
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  position: relative;
 
-.header {
+  .header {
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     color: #333;
+
+    .button-wrapper {
+      position: relative;
+      vertical-align: top;
+
+      .dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        z-index: 1000;
+        border-radius: 6px;
+        width: 100%;
+        transform-origin: top;
+        overflow: hidden;
+      }
+    }
+  }
 }
 
-.dateContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-::ng-deep .common-button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-::ng-deep .common-button:disabled {
-  background-color: #a8a9aa;
-}
-::ng-deep .common-button:hover {
-  background-color: #0056b3;
-}
-
-.calendar-container {
-  position: relative;
-}
-
-.button-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown {
-  position: relative;
-  top: 100%; /* places it just below the button */
-  left: 0;
-  z-index: 1000;
-}
-
+// to display date range data table
 .datesSelected {
-  max-height: 300px;
+  max-height: 70vh;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-top: 15%;
-}
+  margin-top: 6%;
 
-/* Make the table take full width and collapse borders */
-.footfall-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
+  .footfall-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
 
-/* Sticky table header */
-.footfall-table thead th {
-  position: sticky;
-  top: 0;
-  background-color: #f2f2f2;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-  font-size: 16px;
-}
-
-/* Table body rows */
-.footfall-table td {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
+  thead {
+    th {
+      position: sticky;
+      top: 0;
+      background-color: #f2f2f2;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  tbody {
+    td {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      color: #333;
+    }
+  }
 }

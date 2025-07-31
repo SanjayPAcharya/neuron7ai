@@ -8,135 +8,44 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   margin-top: 8px;
-}
 
-.main-container.small {
-  transform: scale(0.6);
-  transform-origin: top center;
-}
-
-.main-container.medium {
-  transform: scale(0.8);
-  transform-origin: top center;
-}
-
-.main-container.large {
-  transform: scale(1);
-  transform-origin: top center;
-}
-
-.calendar-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 100%;
-  font-weight: 600;
-}
-
-.calendar-nav button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-
-.calendar-months-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.month {
-  width: 400px;
-}
-
-.month-header {
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-::ng-deep mwl-calendar-month-view {
-  display: block;
-  max-width: 800px;
-  margin: auto;
-}
-
-::ng-deep .cal-header {
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px 0;
-}
-
-::ng-deep .custom-day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60px !important;
-  padding: 8px;
-  border-radius: 6px;
-  transition: background 0.2s ease;
-  cursor: pointer;
-}
-
-::ng-deep .custom-day.start-date,
-::ng-deep .custom-day.end-date {
-  background-color: #e0f0ff;
-  color: #525252 !important;
-}
-
-::ng-deep .custom-day.in-range {
-  background-color: #e0f0ff;
-  color: #525252;
-  border-radius: 0px;
-}
-
-::ng-deep .cal-month-view .cal-day-cell {
-  min-height: auto;
-}
-
-::ng-deep .day-number {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-::ng-deep .day-price {
-  font-size: 13px;
-  color: #5f5d5d;
-  display: flex;
-  width: 100%;
-  margin-top: 10px;
-  font-weight: 100;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-day.outside-month {
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.footfallicon {
-  height: 12px;
-  width: 12px;
-}
-
-.noShow {
-  display: none;
-}
-
-::ng-deep .cal-month-view .cal-day-cell.cal-today {
-  background-color: #ffffff !important;
-  .custom-day {
-    background-color: #abffab;
+  // these styles handle size at which calender render
+  &.small {
+    transform: scale(0.6);
+    transform-origin: top center;
   }
-}
+  &.medium {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+  &.large {
+    transform: scale(1);
+    transform-origin: top center;
+  }
 
-.blankDiv {
-  height: 100%;
-  width: 100%;
+  .calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-weight: 600;
+  }
+
+  .calendar-months-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    .month {
+      width: 400px;
+      .month-header {
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+    }
+  }
 }
 
 .weekday-header {
@@ -146,19 +55,92 @@
   font-weight: bold;
   font-size: 16px;
   color: gray;
+
+  .weekday {
+    flex: 1;
+    text-align: center;
+  }
 }
 
-.weekday {
-  flex: 1;
-  text-align: center;
+// custom template styles
+.custom-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px !important;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+
+  &.outside-month {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &.start-date,
+  .end-date {
+    background-color: #e0f0ff;
+    color: #525252 !important;
+  }
+  &.in-range {
+    background-color: #e0f0ff;
+    color: #525252;
+    border-radius: 0px;
+  }
+
+  .day-number {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .day-count {
+    font-size: 13px;
+    color: #5f5d5d;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 100;
+    align-items: center;
+    justify-content: center;
+
+    .footfallicon {
+      height: 12px;
+      width: 12px;
+    }
+  }
 }
 
-::ng-deep .cal-cell-row.cal-header {
-  display: none;
+// shows instead of custom template
+.blankDiv {
+  height: 100%;
+  width: 100%;
 }
 
-::ng-deep .cal-month-view .cal-days .cal-cell-row,
-::ng-deep .cal-month-view .cal-day-cell:not(:last-child),
-::ng-deep .cal-month-view .cal-days {
-  border: none;
+// calender overrides
+::ng-deep .cal-month-view {
+  .cal-cell-row {
+    &.cal-header {
+      display: none;
+    }
+  }
+  .cal-days {
+    border: none;
+    .cal-cell-row {
+      border: none;
+    }
+  }
+  .cal-day-cell:not(:last-child) {
+    border: none;
+  }
+
+  .cal-day-cell {
+    min-height: auto;
+    &.cal-today {
+      background-color: #ffffff !important;
+      .custom-day {
+        background-color: #abffab;
+      }
+    }
+  }
 }
