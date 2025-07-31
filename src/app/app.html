@@ -13,7 +13,10 @@
         ></app-calender-range-picker>
       </div>
 
-      <div class="datesSelected">
+      <div
+        class="datesSelected"
+        *ngIf="!isRangePickerOpen && selectedRange?.length"
+      >
         <table class="footfall-table">
           <thead>
             <tr>
